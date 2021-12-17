@@ -1,28 +1,45 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+	<div class="container">
+		<Cliente :clientes="clientes" />
+		<ClienteForm @salvar="aoSalvarUmCliente" />
+		<Conteiner :conteiners="conteiners"/>
+		<ConteinerForm :clientes="clientes" @salvar="aoSalvarUmConteiner" />
+		<Movimentacao :movimentacoes="movimentacoes"/>
+		<MovimentacaoForm :conteiners="conteiners" @salvar="aoSalvarUmaMovimentacao" />
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Cliente from '@/components/cliente/Cliente'
+import ClienteForm from '@/components/cliente/ClienteForm'
+import Conteiner from '@/components/conteiner/Conteiner'
+import ConteinerForm from '@/components/conteiner/ConteinerForm'
+import Movimentacao from '@/components/movimentacao/Movimentacao'
+import MovimentacaoForm from '@/components/movimentacao/MovimentacaoForm'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	name: 'App',
+	components:{
+		ClienteForm, Cliente, Conteiner, ConteinerForm, Movimentacao, MovimentacaoForm
+	},
+	data:()=>({
+		clientes:[{nome:"Marcos", documento:"12345678947"},{ "nome": "Lucas", "documento": "12345678948" }],
+		conteiners:[{ "identificacao": "12345MNHDFGHS", "cliente": { "nome": "Lucas", "documento": "12345678948" }, "tipo": "40", "status": "cheio", "categoria": "importacao" }],
+		movimentacoes:[]
+	}),
+	mounted(){
+
+	},
+	methods:{
+		aoSalvarUmCliente(novoCliente){
+			this.clientes.push(novoCliente)
+		},
+		aoSalvarUmConteiner(novoConteiner){
+			this.conteiners.push(novoConteiner)
+		},
+		aoSalvarUmaMovimentacao(novoMovimentacao){
+			this.movimentacoes.push(novoMovimentacao)
+		}
+	}
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

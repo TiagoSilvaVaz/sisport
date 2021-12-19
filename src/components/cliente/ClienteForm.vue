@@ -13,7 +13,7 @@
             </div>
             <div class="mb-3">
                 <label for="input-documento" class="form-label">Documento</label>
-                <input type="text" class="form-control" id="input-documento" placeholder="Documento" v-model="cliente.documento"/>
+                <input type="text" class="form-control" id="input-documento" v-mask="'###.###.###-##'" placeholder="CPF" v-model="cliente.documento"/>
             </div>
             <button @click="salvar" type="button" class="btn btn-success">Salvar</button>
         </div>
@@ -45,6 +45,8 @@
             salvar(){
                 let cliente = Object.assign({}, this.cliente)
                 this.$emit('salvar', cliente)
+                this.cliente.nome =  "";
+                this.cliente.documento = "";
             }
         }
     }

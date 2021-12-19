@@ -23,7 +23,7 @@ export default {
 		ClienteForm, Cliente, Conteiner, ConteinerForm, Movimentacao, MovimentacaoForm
 	},
 	data:()=>({
-		clientes:[{nome:"Marcos", documento:"12345678947"},{ "nome": "Lucas", "documento": "12345678948" }],
+		clientes:[{nome:"Marcos", documento:"123.456.789-47"},{ "nome": "Lucas", "documento": "123.456.789-48" }],
 		conteiners:[{ "identificacao": "12345MNHDFGHS", "cliente": { "nome": "Lucas", "documento": "12345678948" }, "tipo": "40", "status": "cheio", "categoria": "importacao" }],
 		movimentacoes:[]
 	}),

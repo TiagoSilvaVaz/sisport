@@ -22,11 +22,6 @@
 
 <script>
     export default {
-        props:{
-            titulo:{
-                required:false
-            }
-        },
         data: () => {
             return {
                 cliente:{
@@ -39,9 +34,6 @@
 
         },
         methods:{
-            aoAlterarCampo(){
-                console.log('alterou')
-            },
             salvar(){
                 let cliente = Object.assign({}, this.cliente)
                 this.$emit('salvar', cliente)
